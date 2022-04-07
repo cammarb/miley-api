@@ -2,7 +2,7 @@ import os
 from flask import Flask
 
 from . import api
-from . import simple_pages
+from . import static_pages
 
 
 def create_app():
@@ -15,5 +15,5 @@ def create_app():
 
 
 def register_blueprints(app: Flask):
-    app.register_blueprint(simple_pages.routes.bp)
+    app.register_blueprint(static_pages.routes.bp)
     app.register_blueprint(api.routes.bp)
