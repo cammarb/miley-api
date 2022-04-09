@@ -39,7 +39,7 @@ def get_albums():
     return jsonify(serialize_albums(albums))
 
 
-@bp.get('/api/v1/albums/<id>')
+@bp.get('/api/v1/albums/<int: id>')
 def album(id):
     album = Album.query.get(id)
     return jsonify(
@@ -79,7 +79,7 @@ def get_songs():
     return jsonify(serialize_songs(songs))
 
 
-@bp.get('/api/v1/songs/<id>')
+@bp.get('/api/v1/songs/<int: id>')
 def song(id):
     song = Song.query.get(id)
     return jsonify(
