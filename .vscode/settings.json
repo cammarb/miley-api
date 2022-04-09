@@ -4,5 +4,13 @@
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
-    "python.formatting.provider": "autopep8"
+    "python.formatting.provider": "autopep8",
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "\\\\wsl$\\Ubuntu\\home\\cam\\projects\\miley-api\\app\\database.db",
+            "name": "miley api"
+        }
+    ]
 }
