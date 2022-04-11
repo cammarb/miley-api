@@ -1,5 +1,6 @@
 import json
 from flask import Blueprint, jsonify
+from datetime import datetime
 from app.albums.models import Album
 from app.songs.models import Song
 import socket
@@ -25,7 +26,7 @@ def serialize_albums(albums):
         albums_list.append({
             'id': album.id,
             'title': album.title,
-            'release_date': album.release_date
+            'release_date': datetime.strftime(album.release_date, '%Y-%m-%d')
         })
 
     return albums_list
@@ -37,7 +38,7 @@ def serialize_album(album):
     album = {
         'id': album.id,
         'title': album.title,
-        'release_date': album.release_date,
+        'release_date': datetime.strftime(album.release_date, '%Y-%m-%d'),
         'tracklist': []
     }
     for song in songs:
@@ -92,7 +93,7 @@ def serialize_song(song):
 @bp.get('/api/songs/')
 def get_songs():
     songs = Song.query.all()
-    return json.dumps(serialize_songs(songs))
+    return jsonify(serialize_songs(songs))
 
 
 @bp.get('/api/songs/<int:id>')
