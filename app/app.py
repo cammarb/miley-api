@@ -3,9 +3,6 @@ from flask import Flask
 from app.extensions.database import db, migrate
 
 from . import api
-from . import static_pages
-from . import songs
-from . import albums
 
 
 def create_app():
@@ -19,10 +16,7 @@ def create_app():
 
 
 def register_blueprints(app: Flask):
-    app.register_blueprint(static_pages.routes.bp)
     app.register_blueprint(api.routes.bp)
-    app.register_blueprint(albums.routes.bp)
-    app.register_blueprint(songs.routes.bp)
 
 
 def register_extensions(app: Flask):
