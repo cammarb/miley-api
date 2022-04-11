@@ -1,7 +1,7 @@
-from app.extensions.database import db, CRUD_mixing
+from app.extensions.database import db
 
 
-class Album(db.Model, CRUD_mixing):
+class Album(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(300))
     release_date = db.Column(
