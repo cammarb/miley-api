@@ -1,11 +1,19 @@
 import json
-from datetime import datetime
-import sqlite3
 from flask import Blueprint, jsonify
 from app.albums.models import Album
 from app.songs.models import Song
-
+import socket
+host = socket. getfqdn()
+addr = socket. gethostbyname(host)
 bp = Blueprint('api', __name__)
+
+
+@bp.get('/api')
+@bp.get('/api/')
+def index():
+    return jsonify({
+        "songs": addr+"/api/songs",
+        "albums": addr+"/api/albums"})
 
 # Albums
 
@@ -24,22 +32,30 @@ def serialize_albums(albums):
 
 
 def serialize_album(album):
+    songs = Song.query.all()
+
     album = {
         'id': album.id,
         'title': album.title,
-        'release_date': album.release_date
+        'release_date': album.release_date,
+        'tracklist': []
     }
+    for song in songs:
+        if song.album_id == album['id']:
+            album['tracklist'].append(song.title)
 
     return album
 
 
-@bp.get('/api/v1/albums')
+@bp.get('/api/albums')
+@bp.get('/api/albums/')
 def get_albums():
     albums = Album.query.all()
     return jsonify(serialize_albums(albums))
 
 
-@bp.get('/api/v1/albums/<int: id>')
+@bp.get('/api/albums/<int:id>')
+@bp.get('/api/albums/<int:id>/')
 def album(id):
     album = Album.query.get(id)
     return jsonify(
@@ -56,7 +72,7 @@ def serialize_songs(songs):
         songs_list.append({
             'id': song.id,
             'title': song.title,
-            'album_id': song.album_id
+            'album': Album.query.get(song.album_id).title
         })
 
     return songs_list
@@ -72,14 +88,15 @@ def serialize_song(song):
     return song
 
 
-@bp.get('/api/v1/songs')
+@bp.get('/api/songs')
+@bp.get('/api/songs/')
 def get_songs():
     songs = Song.query.all()
-    albums = Album.query.all()
-    return jsonify(serialize_songs(songs))
+    return json.dumps(serialize_songs(songs))
 
 
-@bp.get('/api/v1/songs/<int: id>')
+@bp.get('/api/songs/<int:id>')
+@bp.get('/api/songs/<int:id>/')
 def song(id):
     song = Song.query.get(id)
     return jsonify(
