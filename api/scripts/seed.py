@@ -102,9 +102,9 @@ songs = [
     }
 ]
 
-for id, song in songs.items():
+for song in songs.items():
     new_song = Song(
-        id=id,
+        id=song['id'],
         title=song['title'],
         length=song['length'],
         album_id=song['album_id']
@@ -113,14 +113,14 @@ for id, song in songs.items():
 
 db.session.commit()
 
-for id, album in albums.items():
-    song_list = Song.query.all()
-    for song in song_list:
-        if song['id'] == id:
-            total_songs = total_songs + 1
-            tracklist.append(song['title'])
-        else:
-            pass
+for album in albums.items():
+    # song_list = Song.query.all()
+    # for song in song_list:
+    #     if song['id'] == id:
+    #         total_songs = total_songs + 1
+    #         tracklist.append(song['title'])
+    #     else:
+    #         pass
 
     # for song in songs.items():
     #     if song['id'] == id:
@@ -131,7 +131,6 @@ for id, album in albums.items():
         id=album['id'],
         title=album['title'],
         release_date=album['release_date'],
-        tracklist=album['tracklist'],
         total_lenght=album['total_lenght'])
     db.session.add(new_album)
 
