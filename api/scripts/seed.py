@@ -1,3 +1,4 @@
+import datetime
 from api.app import create_app
 from api.models.songs import Song
 from api.models.albums import Album
@@ -13,15 +14,12 @@ app.app_context().push()
 
 
 # Albums
-total_songs = 0
-tracklist = []
-
 albums = [
     {
         "id": 1,
         "title": "Meet Miley Cyrus",
-        "release_date": "2007-06-27",
-        "total_lenght": "33:05"
+        "release_date": datetime.date(2007, 6, 27),
+        "total_length": "33:05"
     }
 ]
 
@@ -89,6 +87,311 @@ songs = [
     }
 ]
 
+writers = [
+    {
+        "id": 1,
+        "name": "Destiny Hope Cyrus"
+    },
+    {
+        "id": 2,
+        "name": "Armato"
+    },
+    {
+        "id": 3,
+        "name": "James"
+    },
+    {
+        "id": 4,
+        "name": "Samantha Jo Moore"
+    },
+    {
+        "id": 5,
+        "name": "Matthew Wilder"
+    },
+    {
+        "id": 6,
+        "name": "Tamara Dunn"
+    },
+    {
+        "id": 7,
+        "name": "Shelley Peiken"
+    },
+    {
+        "id": 8,
+        "name": "Xandy Barry"
+    },
+    {
+        "id": 9,
+        "name": "Scott Cutler"
+    },
+    {
+        "id": 10,
+        "name": "Anne Preven"
+    },
+    {
+        "id": 11,
+        "name": "Fefe Dobson"
+    },
+    {
+        "id": 12,
+        "name": "Peiken"
+    },
+    {
+        "id": 13,
+        "name": "Brian Green"
+    },
+    {
+        "id": 14,
+        "name": "Wendi Foy Green"
+    }
+]
+
+
+producers = [
+    {
+        "id": 1,
+        "name": "Armato"
+    },
+    {
+        "id": 2,
+        "name": "James"
+    },
+    {
+        "id": 3,
+        "name": "Wilder"
+    },
+    {
+        "id": 4,
+        "name": "Xandy Barry"
+    },
+    {
+        "id": 5,
+        "name": "Wally Gagel"
+    },
+    {
+        "id": 6,
+        "name": "Annetenna"
+    },
+    {
+        "id": 7,
+        "name": "Brian Green"
+    }
+]
+
+song_writers = [
+    {
+        "song_id": 1,
+        "writer_id": 1
+    },
+    {
+        "song_id": 1,
+        "writer_id": 2
+    },
+    {
+        "song_id": 1,
+        "writer_id": 3
+    },
+    {
+        "song_id": 2,
+        "writer_id": 2
+    },
+    {
+        "song_id": 2,
+        "writer_id": 3
+    },
+    {
+        "song_id": 2,
+        "writer_id": 4
+    },
+    {
+        "song_id": 3,
+        "writer_id": 1
+    },
+    {
+        "song_id": 3,
+        "writer_id": 2
+    },
+    {
+        "song_id": 3,
+        "writer_id": 3
+    },
+    {
+        "song_id": 4,
+        "writer_id": 1
+    },
+    {
+        "song_id": 4,
+        "writer_id": 5
+    },
+    {
+        "song_id": 4,
+        "writer_id": 6
+    },
+    {
+        "song_id": 5,
+        "writer_id": 1
+    },
+    {
+        "song_id": 5,
+        "writer_id": 2
+    },
+    {
+        "song_id": 5,
+        "writer_id": 3
+    },
+    {
+        "song_id": 6,
+        "writer_id": 1
+    },
+    {
+        "song_id": 6,
+        "writer_id": 7
+    },
+    {
+        "song_id": 6,
+        "writer_id": 8
+    },
+    {
+        "song_id": 7,
+        "writer_id": 9
+    },
+    {
+        "song_id": 7,
+        "writer_id": 10
+    },
+    {
+        "song_id": 7,
+        "writer_id": 11
+    },
+    {
+        "song_id": 8,
+        "writer_id": 1
+    },
+    {
+        "song_id": 8,
+        "writer_id": 12
+    },
+    {
+        "song_id": 8,
+        "writer_id": 8
+    },
+    {
+        "song_id": 9,
+        "writer_id": 1
+    },
+    {
+        "song_id": 9,
+        "writer_id": 2
+    },
+    {
+        "song_id": 9,
+        "writer_id": 3
+    },
+    {
+        "song_id": 10,
+        "writer_id": 1
+    },
+    {
+        "song_id": 10,
+        "writer_id": 13
+    },
+    {
+        "song_id": 10,
+        "writer_id": 14
+    }
+]
+
+song_producers = [
+    {
+        "song_id": 1,
+        "producer_id": 2
+    },
+    {
+        "song_id": 1,
+        "producer_id": 3
+    },
+    {
+        "song_id": 2,
+        "producer_id": 2
+    },
+    {
+        "song_id": 2,
+        "producer_id": 3
+    },
+    {
+        "song_id": 3,
+        "producer_id": 2
+    },
+    {
+        "song_id": 3,
+        "producer_id": 3
+    },
+    {
+        "song_id": 4,
+        "producer_id": 5
+    },
+    {
+        "song_id": 5,
+        "producer_id": 2
+    },
+    {
+        "song_id": 5,
+        "producer_id": 3
+    },
+    {
+        "song_id": 6,
+        "producer_id": 8
+    },
+    {
+        "song_id": 6,
+        "producer_id": 5
+    },
+    {
+        "song_id": 7,
+        "producer_id": 6
+    },
+    {
+        "song_id": 8,
+        "producer_id": 2
+    },
+    {
+        "song_id": 8,
+        "producer_id": 3
+    },
+    {
+        "song_id": 9,
+        "producer_id": 2
+    },
+    {
+        "song_id": 9,
+        "producer_id": 3
+    },
+    {
+        "song_id": 10,
+        "producer_id": 7
+    }
+]
+
+for producer in producers:
+    new_producer = Producer(
+        id=producer['id'],
+        name=producer['name'],
+    )
+    db.session.add(new_producer)
+
+db.session.commit()
+
+
+for writer in writers:
+    new_writer = Writer(
+        id=writer['id'],
+        name=writer['name'],
+    )
+    db.session.add(new_writer)
+
+db.session.commit()
+
+
 for song in songs:
     new_song = Song(
         id=song['id'],
@@ -100,12 +403,32 @@ for song in songs:
 
 db.session.commit()
 
+
+for song_producer in song_producers:
+    new_song_producer = SongProducer(
+        song_id=song_producer['song_id'],
+        producer_id=song_producer['producer_id'],
+    )
+    db.session.add(new_song_producer)
+
+db.session.commit()
+
+for song_writer in song_writers:
+    new_song_writer = SongWriter(
+        song_id=song_writer['song_id'],
+        writer_id=song_writer['writer_id'],
+    )
+    db.session.add(new_song_writer)
+
+db.session.commit()
+
 for album in albums:
     new_album = Album(
         id=album['id'],
         title=album['title'],
         release_date=album['release_date'],
-        total_lenght=album['total_lenght'])
+        total_length=album['total_length']
+    )
     db.session.add(new_album)
 
 db.session.commit()
