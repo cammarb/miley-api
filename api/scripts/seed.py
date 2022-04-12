@@ -21,20 +21,7 @@ albums = [
         "id": 1,
         "title": "Meet Miley Cyrus",
         "release_date": "2007-06-27",
-        "tracklist": tracklist,
         "total_lenght": "33:05"
-        # [
-        #     "See You Again",
-        #     "East Northumberland High",
-        #     "Let's Dance",
-        #     "G.N.O. (Girl's Night Out)",
-        #     "Right Here",
-        #     "As I Am",
-        #     "Start All Over",
-        #     "Clear",
-        #     "Good and Broken",
-        #     "I Miss You"
-        # ],
     }
 ]
 
@@ -102,7 +89,7 @@ songs = [
     }
 ]
 
-for song in songs.items():
+for song in songs:
     new_song = Song(
         id=song['id'],
         title=song['title'],
@@ -113,20 +100,7 @@ for song in songs.items():
 
 db.session.commit()
 
-for album in albums.items():
-    # song_list = Song.query.all()
-    # for song in song_list:
-    #     if song['id'] == id:
-    #         total_songs = total_songs + 1
-    #         tracklist.append(song['title'])
-    #     else:
-    #         pass
-
-    # for song in songs.items():
-    #     if song['id'] == id:
-    #         total_songs = total_songs + 1
-    #         tracklist.append(song['title'])
-
+for album in albums:
     new_album = Album(
         id=album['id'],
         title=album['title'],
