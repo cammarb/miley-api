@@ -6,6 +6,7 @@ addr = socket. gethostbyname(host)
 bp = Blueprint('api', __name__)
 
 
+@bp.get('/')
 @bp.get('/api/')
 @bp.get('/api')
 def index():
