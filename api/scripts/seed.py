@@ -1,7 +1,7 @@
-from app.app import create_app
-from app.models.songs import Song
-from app.models.albums import Album
-from app.extensions.database import db
+from api.app import create_app
+from api.models.songs import Song
+from api.models.albums import Album
+from api.extensions.database import db
 
 app = create_app()
 app.app_context().push()

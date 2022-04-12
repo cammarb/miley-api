@@ -1,4 +1,4 @@
-from app.extensions.database import db, CRUD_mixing
+from api.extensions.database import db, CRUD_mixing
 
 
 class SongProducer(db.Model, CRUD_mixing):

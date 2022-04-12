@@ -1,7 +1,7 @@
 import pytest
 from os import environ
 from flask_migrate import upgrade
-from app.app import create_app
+from api.app import create_app
 
 
 @pytest.fixture

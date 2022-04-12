@@ -1,4 +1,4 @@
-from app.extensions.database import db
+from api.extensions.database import db
 
 
 class Writer(db.Model):
