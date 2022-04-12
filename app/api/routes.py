@@ -1,16 +1,16 @@
 import json
 from flask import Blueprint, jsonify
 from datetime import datetime
-from app.albums.models import Album
-from app.songs.models import Song
+from app.models.albums import Album
+from app.models.songs import Song
 import socket
 host = socket. getfqdn()
 addr = socket. gethostbyname(host)
 bp = Blueprint('api', __name__)
 
 
-@bp.get('/api')
 @bp.get('/api/')
+@bp.get('/api')
 def index():
     return jsonify({
         "songs": addr+"/api/songs",
@@ -48,15 +48,15 @@ def serialize_album(album):
     return album
 
 
-@bp.get('/api/albums')
 @bp.get('/api/albums/')
+@bp.get('/api/albums')
 def get_albums():
     albums = Album.query.all()
     return jsonify(serialize_albums(albums))
 
 
-@bp.get('/api/albums/<int:id>')
 @bp.get('/api/albums/<int:id>/')
+@bp.get('/api/albums/<int:id>')
 def album(id):
     album = Album.query.get(id)
     return jsonify(
@@ -89,15 +89,15 @@ def serialize_song(song):
     return song
 
 
-@bp.get('/api/songs')
 @bp.get('/api/songs/')
+@bp.get('/api/songs')
 def get_songs():
     songs = Song.query.all()
     return jsonify(serialize_songs(songs))
 
 
-@bp.get('/api/songs/<int:id>')
 @bp.get('/api/songs/<int:id>/')
+@bp.get('/api/songs/<int:id>')
 def song(id):
     song = Song.query.get(id)
     return jsonify(
