@@ -1,6 +1,6 @@
 from app.app import create_app
-from app.songs.models import Song
-from app.albums.models import Album
+from app.models.songs import Song
+from app.models.albums import Album
 from app.extensions.database import db
 
 app = create_app()
