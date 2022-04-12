@@ -4,7 +4,7 @@ from datetime import datetime
 from api.models.albums import Album
 from api.models.songs import Song
 
-bp = Blueprint('api/albums', __name__)
+bp = Blueprint('albums', __name__)
 
 
 def serialize_albums(albums):
@@ -36,15 +36,15 @@ def serialize_album(album):
     return album
 
 
-@bp.get('/albums/')
-@bp.get('/albums')
+@bp.get('/api/albums/')
+@bp.get('/api/albums')
 def get_albums():
     albums = Album.query.all()
     return jsonify(serialize_albums(albums))
 
 
-@bp.get('/albums/<int:id>/')
-@bp.get('/albums/<int:id>')
+@bp.get('/api/albums/<int:id>/')
+@bp.get('/api/albums/<int:id>')
 def album(id):
     album = Album.query.get(id)
     return jsonify(
