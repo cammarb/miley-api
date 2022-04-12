@@ -7,3 +7,4 @@ class Album(db.Model):
     release_date = db.Column(
         db.Date(), nullable=False)
     songs = db.relationship('Song', backref='album', lazy=True)
+    total_length = db.Column(db.String(10))
