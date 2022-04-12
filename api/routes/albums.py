@@ -14,7 +14,8 @@ def serialize_albums(albums):
         albums_list.append({
             'id': album.id,
             'title': album.title,
-            'release_date': datetime.strftime(album.release_date, '%Y-%m-%d')
+            'release_date': datetime.strftime(album.release_date, '%Y-%m-%d'),
+            'total_length': album.total_length,
         })
 
     return albums_list
@@ -27,6 +28,7 @@ def serialize_album(album):
         'id': album.id,
         'title': album.title,
         'release_date': datetime.strftime(album.release_date, '%Y-%m-%d'),
+        'total_length': album.total_length,
         'tracklist': []
     }
     for song in songs:
