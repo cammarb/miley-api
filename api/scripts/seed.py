@@ -3,9 +3,7 @@ from api.app import create_app
 from api.models.songs import Song
 from api.models.albums import Album
 from api.models.writers import Writer
-from api.models.producers import Producer
 from api.models.song_writers import SongWriter
-from api.models.song_producers import SongProducer
 
 from api.extensions.database import db
 
@@ -18,6 +16,7 @@ albums = [
     {
         "id": 1,
         "title": "Meet Miley Cyrus",
+        "slug": "meet-miley-cyrus",
         "release_date": datetime.date(2007, 6, 27),
         "total_length": "33:05"
     }
@@ -28,60 +27,70 @@ songs = [
     {
         "id": "1",
         "title": "See You Again",
+        "slug": "see-you-again",
         "length": "3:10",
         "album_id": 1
     },
     {
         "id": "2",
         "title": "East Northumberland High",
+        "slug": "east-northumberland-high",
         "length": "3:24",
         "album_id": 1
     },
     {
         "id": "3",
         "title": "Let's Dance",
+        "slug": "lets-dance",
         "length": "3:03",
         "album_id": 1
     },
     {
         "id": "4",
         "title": "G.N.O. (Girl's Night Out)",
+        "slug": "gno-girls-night-out",
         "length": "3:38",
         "album_id": 1
     },
     {
         "id": "5",
         "title": "Right Here",
+        "slug": "right-here",
         "length": "2:45",
         "album_id": 1
     },
     {
         "id": "6",
         "title": "As I Am",
+        "slug": "as-i-am",
         "length": "3:46",
         "album_id": 1
     },
     {
         "id": "7",
         "title": "Start All Over",
+        "slug": "start-all-over",
         "length": "3:27",
         "album_id": 1
     },
     {
         "id": "8",
         "title": "Clear",
+        "slug": "clear",
         "length": "3:03",
         "album_id": 1
     },
     {
         "id": "9",
         "title": "Good and Broken",
+        "slug": "good-and-broken",
         "length": "2:56",
         "album_id": 1
     },
     {
         "id": "10",
         "title": "I Miss You",
+        "slug": "i-miss-you",
         "length": "3:58",
         "album_id": 1
     }
@@ -143,38 +152,6 @@ writers = [
     {
         "id": 14,
         "name": "Wendi Foy Green"
-    }
-]
-
-
-producers = [
-    {
-        "id": 1,
-        "name": "Armato"
-    },
-    {
-        "id": 2,
-        "name": "James"
-    },
-    {
-        "id": 3,
-        "name": "Wilder"
-    },
-    {
-        "id": 4,
-        "name": "Xandy Barry"
-    },
-    {
-        "id": 5,
-        "name": "Wally Gagel"
-    },
-    {
-        "id": 6,
-        "name": "Annetenna"
-    },
-    {
-        "id": 7,
-        "name": "Brian Green"
     }
 ]
 
@@ -301,86 +278,6 @@ song_writers = [
     }
 ]
 
-song_producers = [
-    {
-        "song_id": 1,
-        "producer_id": 2
-    },
-    {
-        "song_id": 1,
-        "producer_id": 3
-    },
-    {
-        "song_id": 2,
-        "producer_id": 2
-    },
-    {
-        "song_id": 2,
-        "producer_id": 3
-    },
-    {
-        "song_id": 3,
-        "producer_id": 2
-    },
-    {
-        "song_id": 3,
-        "producer_id": 3
-    },
-    {
-        "song_id": 4,
-        "producer_id": 5
-    },
-    {
-        "song_id": 5,
-        "producer_id": 2
-    },
-    {
-        "song_id": 5,
-        "producer_id": 3
-    },
-    {
-        "song_id": 6,
-        "producer_id": 8
-    },
-    {
-        "song_id": 6,
-        "producer_id": 5
-    },
-    {
-        "song_id": 7,
-        "producer_id": 6
-    },
-    {
-        "song_id": 8,
-        "producer_id": 2
-    },
-    {
-        "song_id": 8,
-        "producer_id": 3
-    },
-    {
-        "song_id": 9,
-        "producer_id": 2
-    },
-    {
-        "song_id": 9,
-        "producer_id": 3
-    },
-    {
-        "song_id": 10,
-        "producer_id": 7
-    }
-]
-
-for producer in producers:
-    new_producer = Producer(
-        id=producer['id'],
-        name=producer['name'],
-    )
-    db.session.add(new_producer)
-
-db.session.commit()
-
 
 for writer in writers:
     new_writer = Writer(
@@ -396,20 +293,11 @@ for song in songs:
     new_song = Song(
         id=song['id'],
         title=song['title'],
+        slug=song['slug'],
         length=song['length'],
         album_id=song['album_id']
     )
     db.session.add(new_song)
-
-db.session.commit()
-
-
-for song_producer in song_producers:
-    new_song_producer = SongProducer(
-        song_id=song_producer['song_id'],
-        producer_id=song_producer['producer_id'],
-    )
-    db.session.add(new_song_producer)
 
 db.session.commit()
 
@@ -426,6 +314,7 @@ for album in albums:
     new_album = Album(
         id=album['id'],
         title=album['title'],
+        slug=album['slug'],
         release_date=album['release_date'],
         total_length=album['total_length']
     )
