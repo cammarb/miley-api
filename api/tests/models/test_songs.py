@@ -1,4 +1,4 @@
-from api.extensions.database import db, CRUD_mixing
+from api.extensions.database import db,
 from api.models.songs import Song
 
 
