@@ -1,8 +1,8 @@
-# from api.models.albums import Album
-# from api.models.songs import Song
+from api.models.album import Album
+from api.models.song import Song
 # from api.models.writers import Writer
 # from api.models.song_writers import SongWriter
-# from datetime import datetime
+from datetime import datetime
 
 
 # def serialize_songs(songs, song_id):
@@ -56,3 +56,21 @@
 #         return albums_list[album_id.id-1]
 #     else:
 #         return albums_list
+
+def serialize_albums(albums, album_id):
+    albums_list = []
+
+    for album in albums:
+        albums_list.append({
+            'id': album.id,
+            'title': album.title,
+            'slug': album.slug,
+            'release_date': datetime.strftime(album.release_date, '%Y-%m-%d'),
+            'total_length': album.total_length,
+            'tracklist': [],
+            'total_songs': 0
+        })
+    if album_id != 0:
+        return albums_list[album_id.id-1]
+    else:
+        return albums_list
