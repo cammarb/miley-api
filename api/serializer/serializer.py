@@ -9,6 +9,7 @@ def serialize_songs(songs, song_id):
     songs_list = []
     artists = Artist.query.all()
     song_artists = SongArtist.query.all()
+    song_featurings = SongFeaturing.query.all()
 
     for song in songs:
         songs_list.append({
@@ -21,9 +22,15 @@ def serialize_songs(songs, song_id):
             'featuring': []
         })
         for song_artist in song_artists:
-            if artists.song_id == songs_list[(song.id)-1]['id']:
-                songs_list[(song.id)-1]['writers'].append(
-                    Writer.query.get(song_writer.writer_id).name)
+            if song_artist.song_id == songs_list[(song.id)-1]['id']:
+                songs_list[(song.id)-1]['artist'].append(
+                    Artist.query.get(song_artist.artist_id).name)
+            else:
+                pass
+        for song_featuring in song_featurings:
+            if song_featuring.song_id == songs_list[(song.id)-1]['id']:
+                songs_list[(song.id)-1]['artist'].append(
+                    Artist.query.get(song_featuring.artist_id).name)
             else:
                 pass
 
