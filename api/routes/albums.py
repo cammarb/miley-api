@@ -15,11 +15,11 @@ def get_albums():
     )
 
 
-# @bp.get('/api/albums/<int:id>/')
-# @bp.get('/api/albums/<int:id>')
-# def album(id):
-#     albums = Album.query.all()
-#     album_id = Album.query.get(id)
-#     return json.dumps(
-#         serialize_albums(albums, album_id)
-#     )
+@bp.get('/api/albums/<int:id>/')
+@bp.get('/api/albums/<int:id>')
+def album(id):
+    albums = Album.query.all()
+    album_id = Album.query.get(id)
+    return jsonify(
+        serialize_albums(albums, album_id)
+    )
