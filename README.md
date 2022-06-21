@@ -5,4 +5,4 @@ The Miley Cyrus API is based on Miley Cyrus's music carreer. You will have acces
 *Documentation comming soon*
 
 ## Website
-*comming soon*
+[*V1 available*](https://miley-api.herokuapp.com/api)
