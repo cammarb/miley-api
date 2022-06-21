@@ -7,7 +7,6 @@ from datetime import datetime
 
 def serialize_songs(songs, song_id):
     songs_list = []
-    artists = Artist.query.all()
     song_artists = SongArtist.query.all()
     song_featurings = SongFeaturing.query.all()
 
