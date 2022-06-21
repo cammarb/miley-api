@@ -2,7 +2,8 @@ from flask import Blueprint, jsonify, redirect, url_for
 import socket
 
 host = socket. getfqdn()
-addr = socket. gethostbyname(host)
+# addr = socket. gethostbyname(host)
+addr = 'miley-api.herokuapp.com'
 bp = Blueprint('api', __name__)
 
 
