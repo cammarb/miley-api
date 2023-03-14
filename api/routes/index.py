@@ -3,7 +3,7 @@ import socket
 
 host = socket. getfqdn()
 # addr = socket. gethostbyname(host)
-addr = 'miley-api.herokuapp.com'
+addr = 'miley-api.vercel.app'
 bp = Blueprint('api', __name__)
 
 

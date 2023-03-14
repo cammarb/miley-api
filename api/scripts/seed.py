@@ -1,9 +1,7 @@
 import datetime
 from api.app import create_app
-from api.models.songs import Song
-from api.models.albums import Album
-from api.models.writers import Writer
-from api.models.song_writers import SongWriter
+from api.models.song import Song
+from api.models.album import Album
 
 from api.extensions.database import db
 
