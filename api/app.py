@@ -3,7 +3,7 @@ from flask import Flask
 from flask_cors import CORS
 from api.extensions.database import db, migrate
 
-from . import routes
+from . import views
 
 
 def create_app():
@@ -19,9 +19,9 @@ def create_app():
 
 
 def register_blueprints(app: Flask):
-    app.register_blueprint(routes.index.bp)
-    app.register_blueprint(routes.albums.bp)
-    app.register_blueprint(routes.songs.bp)
+    app.register_blueprint(views.index.bp)
+    app.register_blueprint(views.albums.bp)
+    app.register_blueprint(views.songs.bp)
 
 
 def register_extensions(app: Flask):

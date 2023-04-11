@@ -1,7 +1,5 @@
 from flask import Blueprint, jsonify, redirect, request, url_for
-import socket
 
-host = socket.getfqdn()
 bp = Blueprint("api", __name__)
 
 
