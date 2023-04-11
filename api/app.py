@@ -1,5 +1,6 @@
 import os
 from flask import Flask
+from flask_cors import CORS
 from api.extensions.database import db, migrate
 
 from . import routes
@@ -7,7 +8,9 @@ from . import routes
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object('api.config')
+    app.config.from_object("api.config")
+
+    CORS(app)
 
     register_blueprints(app)
     register_extensions(app)
