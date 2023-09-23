@@ -1,7 +1,7 @@
-from api.models.album import Album
-from api.models.song import Song, SongArtist, SongFeaturing
+from app.models.album import Album
+from app.models.song import Song, SongArtist, SongFeaturing
 # from api.models.writers import Writer
-from api.models.artist import Artist
+from app.models.artist import Artist
 from datetime import datetime
 
 

@@ -1,13 +1,13 @@
 import os
 from flask import Flask
-from api.extensions.database import db, migrate
+from app.extensions.database import db, migrate
 
 from . import routes
 
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object('api.config')
+    app.config.from_object('app.config')
 
     register_blueprints(app)
     register_extensions(app)
@@ -16,9 +16,7 @@ def create_app():
 
 
 def register_blueprints(app: Flask):
-    app.register_blueprint(routes.index.bp)
-    app.register_blueprint(routes.albums.bp)
-    app.register_blueprint(routes.songs.bp)
+    app.register_blueprint(routes.api.bp, url_prefix="/api/v1/")
 
 
 def register_extensions(app: Flask):

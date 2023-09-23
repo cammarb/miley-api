@@ -1,3 +1,4 @@
+from sys import prefix
 from flask import Blueprint, jsonify, redirect, request, url_for
 import socket
 
@@ -12,8 +13,7 @@ def std_index():
     return redirect(url_for("api.index"))
 
 
-@bp.get("/api/")
-@bp.get("/api")
+@bp.get("/")
 def index():
     return jsonify(
         {

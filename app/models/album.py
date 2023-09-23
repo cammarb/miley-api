@@ -1,4 +1,4 @@
-from api.extensions.database import db
+from app.extensions.database import db
 
 
 class Album(db.Model):

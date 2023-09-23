@@ -1,8 +1,8 @@
-"""Initial migration.
+"""first migration
 
-Revision ID: 10ab14499bf8
+Revision ID: fcaa73ce5d8e
 Revises: 
-Create Date: 2023-04-10 08:44:55.323991
+Create Date: 2023-09-23 12:47:45.873397
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '10ab14499bf8'
+revision = 'fcaa73ce5d8e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,6 +22,12 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('role',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=25), nullable=True),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('name')
     )
     op.create_table('album',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -37,6 +43,18 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('slug'),
     sa.UniqueConstraint('title')
+    )
+    op.create_table('user',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('email', sa.String(length=100), nullable=True),
+    sa.Column('name', sa.String(length=100), nullable=True),
+    sa.Column('passwd', sa.String(length=300), nullable=True),
+    sa.Column('username', sa.String(length=102), nullable=True),
+    sa.Column('role_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['role_id'], ['role.id'], ),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('email'),
+    sa.UniqueConstraint('username')
     )
     op.create_table('song',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -71,6 +89,8 @@ def downgrade():
     op.drop_table('song_featuring')
     op.drop_table('song_artist')
     op.drop_table('song')
+    op.drop_table('user')
     op.drop_table('album')
+    op.drop_table('role')
     op.drop_table('artist')
     # ### end Alembic commands ###
