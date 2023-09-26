@@ -2,7 +2,7 @@
 %} {{super()}} {% endblock %} {% block container %}
 <div class="header">
   <h1>{% block title %} Artists {% endblock %}</h1>
-  {% if current_user.is_authenticated %}
+  {% if current_user.is_authenticated and current_user.id == 3 %}
   <a href="/artists/add">
     <button type="button" class="btn-alt">Add</button>
   </a>
@@ -16,7 +16,7 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
-      {% if current_user.is_authenticated %}
+      {% if current_user.is_authenticated and current_user.id == 3 %}
 
       <th scope="col">Actions</th>
       {% endif %}

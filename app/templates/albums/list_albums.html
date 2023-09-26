@@ -1,77 +1,66 @@
-{% extends 'base.html'%}
-{% block head%}
-{{super()}}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/albums.css') }}">
+{% extends 'base.html'%} {% block head%} {{super()}}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/albums.css') }}"
+/>
 <script src="{{ url_for('static', filename='js/showTracklist.js') }}"></script>
-{% endblock %}
-
-{% block nav %}
-{{super()}}
-{% endblock %}
-
-{% block container %}
+{% endblock %} {% block nav %} {{super()}} {% endblock %} {% block container %}
 <div class="header">
-    <h1>
-        {% block title %}Albums{% endblock %}
-    </h1>
-    {% if current_user.is_authenticated %}
-    <a href="/albums/add_album">
-        <button type="button" class="btn-alt">Add</button></a>
-    {% endif %}
+  <h1>{% block title %}Albums{% endblock %}</h1>
+  {% if current_user.is_authenticated and current_user.id == 3 %}
+  <a href="/albums/add_album">
+    <button type="button" class="btn-alt">Add</button></a
+  >
+  {% endif %}
 </div>
 
 <!-- List of albums added -->
 {% if not albums %}
 <p>No albums added yet.</p>
-{% else %}
-{% for album in albums %}
+{% else %} {% for album in albums %}
 <div class="single_album">
-
-    <div class="album_info">
-
-        <div class="album_artwork">
-            <img id="artwork" src="https://lastfm.freetls.fastly.net/i/u/770x0/62b2bd67678a4b51cb4960366da7d3b3.jpg"
-                alt="miley cyrus' album {{album.title}}">
-        </div>
-
-        <div class="info">
-            <h2> {{album.title}}</h2>
-            {% for artist in artists %}
-            {% if artist["id"] == album.artist_id %}
-            <h3>By: {{artist["name"]}}</h3>
-            {% endif %}
-            {% endfor %}
-            <h4>Release date: {{album.release_date}}</h4>
-            <p># of songs: {{album.number_of_songs}}</p>
-            <button id="tracklist-toggle" class="btn-alt" onclick="openTracklist();">
-                Songs
-            </button>
-            {% if current_user.is_authenticated %}
-            <a href="/albums/{{album.id}}">
-                <button class="btn-alt">Edit</button>
-            </a>
-            {% endif %}
-        </div>
-
+  <div class="album_info">
+    <div class="album_artwork">
+      <img
+        id="artwork"
+        src="https://lastfm.freetls.fastly.net/i/u/770x0/62b2bd67678a4b51cb4960366da7d3b3.jpg"
+        alt="miley cyrus' album {{album.title}}"
+      />
     </div>
 
-    <div class="tracklist">
-        <div class="tracklist_title">
-            <button id="close-tracklist" class="btn-back" onclick="closeTracklist();">
-                <i class="uil uil-arrow-left"></i>
-            </button>
-            <h4>Tracklist</h4>
-        </div>
-        <ol>
-            {% for song_in_album in album.tracklist %}
-            <li>{{ song_in_album['title'] }}</li>
-            {% endfor %}
-        </ol>
+    <div class="info">
+      <h2>{{album.title}}</h2>
+      {% for artist in artists %} {% if artist["id"] == album.artist_id %}
+      <h3>By: {{artist["name"]}}</h3>
+      {% endif %} {% endfor %}
+      <h4>Release date: {{album.release_date}}</h4>
+      <p># of songs: {{album.number_of_songs}}</p>
+      <button id="tracklist-toggle" class="btn-alt" onclick="openTracklist();">
+        Songs
+      </button>
+      {% if current_user.is_authenticated %}
+      <a href="/albums/{{album.id}}">
+        <button class="btn-alt">Edit</button>
+      </a>
+      {% endif %}
     </div>
+  </div>
 
+  <div class="tracklist">
+    <div class="tracklist_title">
+      <button id="close-tracklist" class="btn-back" onclick="closeTracklist();">
+        <i class="uil uil-arrow-left"></i>
+      </button>
+      <h4>Tracklist</h4>
+    </div>
+    <ol>
+      {% for song_in_album in album.tracklist %}
+      <li>{{ song_in_album['title'] }}</li>
+      {% endfor %}
+    </ol>
+  </div>
 </div>
 {% endfor %}
-
 
 <!-- <table>
     <thead>
@@ -108,5 +97,4 @@
         {% endfor %}
     </tbody>
 </table> -->
-{% endif %}
-{% endblock %}
+{% endif %} {% endblock %}
