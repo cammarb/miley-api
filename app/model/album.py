@@ -1,7 +1,7 @@
-from app.extensions.database import db
+from app.extensions.database import CRUD_mixing, db
 
 
-class Album(db.Model):
+class Album(db.Model, CRUD_mixing):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False, unique=True)
     slug = db.Column(db.String, nullable=False, unique=True)
@@ -13,5 +13,4 @@ class Album(db.Model):
         "Song", back_populates="album", cascade="all, delete-orphan"
     )
     total_length = db.Column(db.String)
-    artist_id = db.Column(db.Integer, db.ForeignKey(
-        "artist.id"), nullable=False)
+    artist_id = db.Column(db.Integer, db.ForeignKey("artist.id"), nullable=False)

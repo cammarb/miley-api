@@ -1,19 +1,17 @@
-from api.extensions.database import db
+from app.extensions.database import CRUD_mixing, db
 
 
-class SongArtist(db.Model):
+class SongArtist(db.Model, CRUD_mixing):
     song_id = db.Column(db.Integer, db.ForeignKey("song.id"), primary_key=True)
-    artist_id = db.Column(db.Integer, db.ForeignKey(
-        "artist.id"), primary_key=True)
+    artist_id = db.Column(db.Integer, db.ForeignKey("artist.id"), primary_key=True)
 
 
-class SongFeaturing(db.Model):
+class SongFeaturing(db.Model, CRUD_mixing):
     song_id = db.Column(db.Integer, db.ForeignKey("song.id"), primary_key=True)
-    featuring_id = db.Column(
-        db.Integer, db.ForeignKey("artist.id"), primary_key=True)
+    featuring_id = db.Column(db.Integer, db.ForeignKey("artist.id"), primary_key=True)
 
 
-class Song(db.Model):
+class Song(db.Model, CRUD_mixing):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False, unique=True)
     slug = db.Column(db.String, nullable=False, unique=True)

@@ -1,7 +1,7 @@
-from app.extensions.database import db
+from app.extensions.database import CRUD_mixing, db
 
 
-class Artist(db.Model):
+class Artist(db.Model, CRUD_mixing):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     albums = db.relationship(
