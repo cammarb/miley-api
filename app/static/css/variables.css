@@ -1,0 +1,36 @@
+/* Font: Source Sans Pro */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+/* Font: Nunito */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    color-scheme: dark;
+    /* Font */
+    --font: 'Source Sans Pro', sans-serif;
+    --miley-font: 'Nunito', sans-serif;
+    --fz-1: 1.02em;
+    --fz-2: 1.1em;
+    --fz-3: 1.5em;
+    --fz-4: 2.2em;
+    /* Colors */
+    --bg: rgb(17, 17, 17);
+    --bg-grey-300: #999999;
+    --bg-grey-200: #4e4e4e;
+    --bg-grey-100: #7474743d;
+    --bg-grey-50: #3f3f3f3d;
+    --fg-white-100: rgb(240, 240, 240);
+    --fg-white-200: rgb(221, 221, 221);
+    --fg-pink-300: rgb(226, 33, 146);
+    --fg-pink-200: rgb(206, 69, 149);
+    --fg-pink-100: rgb(200, 70, 146);
+    --btn-pink: rgb(230, 25, 144);
+    --btn-pink-hover: rgb(182, 21, 115);
+    --anchor-fg-hover: rgb(230, 25, 144);
+    --anchor-bg-hover: rgba(197, 58, 139, 0.301);
+    --grey-border: #686868;
+    --btn-danger: rgb(235, 53, 53);
+    --btn-danger-hover: rgb(198, 57, 57);
+
+}
+
+/* @media (prefers-color-scheme: dark) */

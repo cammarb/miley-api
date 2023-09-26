@@ -1,0 +1,25 @@
+/* .songs {
+    width: 100%;
+    display: block;
+} */
+
+.single_song {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 1rem;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#album-link {
+    color: var(--fg-pink-300);
+    background: none;
+}
+
+@media (max-width: 40em) {
+    .single_song {
+        gap: 2rem;
+        flex-direction: column;
+    }
+}

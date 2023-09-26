@@ -1,0 +1,78 @@
+{% extends 'base.html'%}
+{% block head%}
+{{super()}}
+<script src="{{ url_for('static',filename='js/multiselect.js') }}"></script>
+{% endblock %}
+
+{% block nav %}
+{{super()}}
+{% endblock %}
+
+
+{% block container %}
+<div class="header">
+    <h1>
+        {% block title %}Add Song{% endblock %}
+    </h1>
+</div>
+<form method="post">
+    <div>
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" placeholder="See You Again">
+    </div>
+    <div>
+        <label for="slug">Slug:</label>
+        <input type="text" name="slug" id="slug" placeholder="see-you-again">
+    </div>
+    <div>
+        <label for="length">Length:</label>
+        <input type="text" name="length" id="length">
+    </div>
+    <div>
+        <label for="album_id">Album:</label>
+        <select name="album_id" id="album_id">
+            <option disabled selected value>Select an Option</option>
+            {% for album in albums %}
+            <option value="{{album.id}}">{{album.title}}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div>
+        <label for="main_artists">Main Artist(s):</label>
+        <div class="select-container" id="main_artists" name="main_artists">
+            <div id="select-btn" onclick="toggleArtist()">
+                Select Options
+                <i id="angle-down-icon" class="uis uis-angle-down"></i>
+            </div>
+            <div id="artist-container">
+                {% for artist in artists %}
+                <div class="option">
+                    <input type="checkbox" name="main_artist" value="{{artist.id}}">{{artist.name}}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <label for="featuring_artists">Featuring Artist(s):</label>
+        <div class="select-container" id="featuring_artists" name="featuring_artists">
+            <div id="select-btn" onclick="toggleFeaturing()">
+                Select Options
+                <i id="angle-down-icon" class="uis uis-angle-down"></i>
+            </div>
+            <div id="featuring-container">
+                {% for artist in artists %}
+                <div class="option">
+                    <input type="checkbox" name="ft_artist" value="{{artist.id}}">{{artist.name}}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div>
+        <button type="submit" class="btn ">Add</button>
+    </div>
+</form>
+{% endblock %}

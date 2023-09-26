@@ -1,0 +1,133 @@
+.single_album {
+    width: 100%;
+
+    padding: 1rem;
+    margin: 2rem 0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 5rem;
+
+    /* border: 1px solid var(--grey-border); */
+    border-radius: 0.5rem;
+    background-color: var(--bg-grey-50);
+}
+
+#artwork {
+    max-width: 200px;
+}
+
+.album_info {
+    display: flex;
+    gap: 1.8rem;
+}
+
+.album_info h3 {
+    padding-bottom: 0.4rem;
+}
+
+.album_info button {
+    margin-top: 1.8rem;
+    margin-right: 1rem;
+}
+
+#tracklist-toggle {
+    display: none;
+}
+
+.tracklist ol {
+    margin-top: 0.5rem;
+}
+
+ol {
+    padding-left: 1em;
+}
+
+.tracklist.open {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transform: translateX(0%);
+}
+
+.tracklist_title {
+    display: flex;
+    align-items: center;
+}
+
+.btn-back {
+    display: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.btn-back i {
+    font-size: 2em;
+    color: var(--btn-pink);
+}
+
+
+@media (max-width: 45em) {
+    .tracklist * {
+        background: none;
+    }
+
+    .tracklist {
+        /* min-height: 50vh;
+        min-width: 90vw; */
+
+        display: none;
+
+        margin: auto auto;
+        padding: 4em;
+
+        /* transform: translateX(100%);
+        transition: transform 350ms ease-out; */
+
+        position: fixed;
+        z-index: 1000;
+        inset: 0;
+
+        background-color: rgba(0, 0, 0, 0.808);
+        backdrop-filter: blur(30px);
+    }
+
+    #tracklist-toggle {
+        display: block;
+    }
+
+    .tracklist_title h4 {
+        font-size: 2em;
+        margin-left: 1rem;
+    }
+
+    .tracklist ol {
+        font-size: 1.4em;
+        margin: 2rem 0 0 3.4rem;
+    }
+
+    .btn-back {
+        display: block;
+    }
+}
+
+@media (max-width: 32em) {
+    .single_album {
+        width: 100%;
+    }
+
+    .album_info {
+        display: flex;
+        align-items: center;
+
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #artwork {
+        max-width: 100%;
+    }
+}

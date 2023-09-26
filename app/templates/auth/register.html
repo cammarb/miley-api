@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block head %}
+{{super()}}
+{% endblock %}
+
+{% block nav %}
+{{super()}}
+{% endblock %}
+
+{% block container %}
+
+<div class="header">
+    <h2>
+        {% block title %}Register{% endblock %}
+    </h2>
+    <div>
+        {% if error %}
+        <p style="color: tomato;">{{ error }}</p>
+        {% endif %}
+    </div>
+</div>
+
+<form method="post">
+    <div>
+        <label for="name">Full name:</label>
+        <input type="text" name="name" id="name" required>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+    </div>
+
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+    </div>
+
+    <div>
+        <label for="password_confirmation">Password Confirmation:</label>
+        <input type="password" name="password_confirmation" id="password_confirmation" required>
+    </div>
+    <div>
+        <button type="submit" class="btn">Register</button>
+    </div>
+</form>
+{% endblock %}

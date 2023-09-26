@@ -1,0 +1,52 @@
+{% extends 'base.html'%} {% block title %}Home{% endblock %} {% block head%}
+{{super()}}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/home.css') }}"
+/>
+{% endblock %} {% block nav %} {{super()}} {% endblock %} {% block container %}
+<div class="home-header">
+  <div class="heading-container">
+    <h1>Miley Cyrus API Website</h1>
+    <p>
+      This is the management system for the complete Miley Cyrus API database.
+      Made to be accessed by the free and open source
+      <a href="{{request.url_root}}/api/v1" id="miley-api-link"
+        >Miley API <i class="uil uil-github-alt"></i
+      ></a>
+    </p>
+    <a href="/songs">
+      <button class="btn-alt">explore</button>
+    </a>
+  </div>
+  <div class="cd-container">
+    <img
+      src="{{ url_for('static', filename='img/plastic-hearts.jpg') }}"
+      alt="miley cyrus album artwork 'Plastic hearts'"
+      srcset=""
+      id="cd-img"
+    />
+  </div>
+</div>
+<!-- <div class="cards-menu">
+    <a href="/songs" class="btn card-btn">
+        <img src="{{ url_for('static', filename='img/song.svg') }}" id="svg-img" alt="Musical notes">
+        <div class="card-title">
+            <h3>Songs</h3>
+        </div>
+    </a>
+    <a href="/albums" class="btn card-btn">
+        <img src="{{ url_for('static', filename='img/album.svg') }}" id="svg-img" alt="CD">
+        <div class="card-title">
+            <h3>Albums</h3>
+        </div>
+    </a>
+    <a href="/artists" class="btn card-btn">
+        <img src="{{ url_for('static', filename='img/artist.svg') }}" id="svg-img" alt="Microphone">
+        <div class="card-title">
+            <h3>Artists</h3>
+        </div>
+
+    </a>
+</div> -->
+{% endblock %}

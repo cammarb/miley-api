@@ -1,0 +1,86 @@
+{% extends 'base.html'%}
+{% block head%}
+{{super()}}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/songs.css') }}">
+
+{% endblock %}
+
+{% block nav %}
+{{super()}}
+{% endblock %}
+
+{% block container %}
+<div class="header">
+    <h1>
+        {% block title %}
+        Songs
+        {% endblock %}
+    </h1>
+    {% if current_user.is_authenticated %}
+    <a href="/songs/add_song">
+        <button type="button" class="btn-alt">Add</button></a>
+    {% endif %}
+</div>
+
+<!-- List of songs added -->
+{% if not songs %}
+<p>No songs added yet.</p>
+{% else %}
+
+<!-- ALTERNATIVE -->
+<!-- {% for song in songs %}
+<div class="single_song">
+    <p>{{song.id}}.</p>
+    <p>{{song.title}}</p>
+    - <p>
+        {% for album in albums %}
+        {% if (album.id == song.album_id) %}
+
+        {{ album.title }}
+
+        {% endif %}
+        {% endfor %}
+    </p>
+    <p>{{song.length}}</p>
+    {% if current_user.is_authenticated %}
+    <a href="/songs/{{song.id}}">
+        <button class="btn-alt">Edit</button></a>
+    {% endif %}
+</div>
+{% endfor %} -->
+
+<table>
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Album</th>
+            <th scope="col">Length</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for song in songs %}
+        <tr>
+            <td>{{song.id}}.</td>
+            <td>{{song.title}}</td>
+            {% for album in albums %}
+            {% if (album.id == song.album_id) %}
+            <td>
+                <a href="/albums/{{ album.id }}" id="album-link">{{ album.title }}</a>
+            </td>
+            {% endif %}
+            {% endfor %}
+            <td>{{song.length}}</td>
+            {% if current_user.is_authenticated %}
+            <td>
+                <a href="/songs/{{song.id}}">
+                    <button class="btn-alt">Edit</button></a>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}

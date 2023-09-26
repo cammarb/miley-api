@@ -1,0 +1,56 @@
+{% extends 'base.html'%}
+{% block head%}
+{{super()}}
+{% endblock %}
+
+{% block nav %}
+{{super()}}
+{% endblock %}
+
+
+{% block container %}
+<div class="header">
+    <h1>
+        {% block title %}Add Album{% endblock %}
+    </h1>
+</div>
+
+<form method="post">
+    <div>
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" placeholder="Meet Miley Cyrus">
+    </div>
+    <div>
+        <label for="slug">Slug:</label>
+        <input type="text" name="slug" id="slug" placeholder="meet-miley-cyrus">
+    </div>
+    <div>
+        <label for="release_date">Release Date:</label>
+        <input type="date" name="release_date" id="release_date">
+    </div>
+    <div>
+        <label for="is_live">Live:</label>
+        <input type="checkbox" name="is_live" id="is_live" value="true">
+    </div>
+    <div>
+        <label for="is_ep">EP:</label>
+        <input type="checkbox" name="is_ep" id="is_ep" value="true">
+    </div>
+    <div>
+        <label for="total_length">Total length:</label>
+        <input type="text" name="total_length" id="total_length">
+    </div>
+    <div>
+        <label for="artist_id">Artist:</label>
+        <select name="artist_id" id="artist_id">
+            <option disabled selected value>-- select an option --</option>
+            {% for artist in artists%}
+            <option value="{{artist.id}}">{{artist.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <button type="submit" class="btn">Add</button>
+    </div>
+</form>
+{% endblock %}

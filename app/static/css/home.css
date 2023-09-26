@@ -1,0 +1,93 @@
+.home-header {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    gap: 3rem;
+}
+
+.header div {
+    padding: 0 1.8rem;
+}
+
+.heading-container {
+    width: 60%;
+    text-align: center;
+}
+
+.heading-container h1 {
+    padding-bottom: 1rem;
+}
+
+.heading-container p {
+    padding: 1rem 0;
+    line-height: 1.8rem;
+}
+
+#miley-api-link,
+#miley-api-link i {
+    color: var(--fg-pink-300);
+}
+
+.cd-container {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+
+#cd-img {
+    width: 80%;
+}
+
+.cards-menu {
+    width: min(80%, 50rem);
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.card-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-btn * {
+    background: none !important;
+}
+
+#svg-img {
+    width: 10rem;
+}
+
+.card-title {
+    margin-top: 0.8rem;
+}
+
+/* .card-title h3 {
+    color: var(--fg-pink-300);
+} */
+
+@media (max-width: 50em) {
+    .home-header {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .heading-container,
+    .cd-container {
+        width: 100%;
+    }
+
+    .cd-container img {
+        max-width: 40%;
+    }
+}

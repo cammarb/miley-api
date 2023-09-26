@@ -1,0 +1,333 @@
+@import "variables.css";
+
+* {
+    padding: 0;
+    margin: 0;
+
+    box-sizing: border-box;
+    font-family: var(--font);
+    font-size: var(--fz-1);
+    text-decoration: none;
+
+    color: var(--fg-white-100);
+    /* background-color: var(--bg); */
+}
+
+/* Fonts */
+h1 {
+    font-size: var(--fz-4);
+}
+
+h2 {
+    font-size: var(--fz-3);
+}
+
+h3 {
+    font-size: var(--fz-2);
+}
+
+p {
+    font-size: var(--fz-1);
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(151deg, rgba(38, 38, 38, 1) 0%, rgba(0, 0, 0, 1) 100%, rgba(0, 0, 0, 1) 100%);
+}
+
+main {
+    width: min(95%, 70rem);
+    min-height: 100vh;
+    margin: 0 auto;
+    position: relative;
+}
+
+nav {
+    width: 100%;
+    min-height: 4rem;
+    overflow: hidden;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--grey-border);
+}
+
+.home-nav {
+    width: 100%;
+    min-height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#menu-item {
+    color: var(--bg-grey-300);
+    margin: 0 0.5rem;
+    padding: 0.25rem 0.5rem;
+    font-size: var(--fz-2);
+}
+
+#logo {
+    font-family: var(--miley-font);
+    font-size: var(--fz-3);
+    color: var(--fg-pink-300);
+    font-weight: 600;
+}
+
+#menu-item:hover {
+    background-color: var(--anchor-bg-hover);
+    border-radius: 0.5rem;
+    color: var(--anchor-fg-hover);
+}
+
+#account-item {
+    display: flex;
+    width: fit-content;
+    margin: 0 0.5rem;
+    padding: 0.25rem 0.5rem;
+    background-color: var(--anchor-bg-hover);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+#logout {
+    background: none;
+    padding-left: 0.5rem;
+}
+
+#github {
+    margin: 0 1rem 0 1rem;
+    padding: 0.25rem 0.5rem;
+    font-size: var(--fz-2);
+    background: none;
+}
+
+#github i {
+    color: var(--bg-grey-300);
+}
+
+#github i:hover {
+    color: var(--fg-white-100);
+}
+
+#login-btn {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.container {
+    width: 100%;
+    padding: 5rem 0;
+    min-height: 100vh;
+    /* background-image: url(../img/plastic-hearts.jpg); */
+    /* backdrop-filter: blur(30px); */
+}
+
+/* Components */
+/* Buttons */
+.btn {
+    padding: 0.4rem 0.8rem;
+    background-color: var(--bg-grey-200);
+    border-radius: 0.5rem;
+    border: 0.05rem solid var(--grey-border);
+    color: var(--fg-pink-200);
+    font-weight: 600;
+}
+
+.btn-alt {
+    cursor: pointer;
+    padding: 0.6rem 1rem;
+    background-color: var(--btn-pink);
+    border-radius: 0.5rem;
+    border: none;
+    color: var(--fg-white-100);
+    font-weight: 600;
+}
+
+.btn-alt:hover {
+    background-color: var(--btn-pink-hover);
+}
+
+.btn:hover {
+    background-color: var(--grey-border);
+    color: var(--fg-pink-100);
+}
+
+.btn-danger {
+    background-color: var(--btn-danger);
+    color: var(--fg-white-100);
+}
+
+.btn-danger:hover {
+    background-color: var(--btn-danger-hover);
+    color: var(--fg-white-200);
+}
+
+/* Header */
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+/* Hamburger menu */
+#hamburger-btn {
+    background: none;
+    font-size: 1.2em;
+    display: none;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+#hamburger-btn:hover {
+    background-color: var(--anchor-bg-hover);
+}
+
+.menu {
+    /* background-color: var(--bg); */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Tables */
+table {
+    margin: 1rem auto;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead th,
+tbody td {
+    text-align: start;
+    padding: 0.4rem 0.8rem;
+}
+
+/* td {
+    border: 1px solid var(--grey-border);
+} */
+
+th {
+    border-bottom: 1px solid var(--grey-border);
+}
+
+tr:hover td {
+    background-color: var(--bg-grey-100);
+}
+
+/* Forms */
+form label,
+form select {
+    padding-right: 1rem;
+}
+
+form input,
+form select {
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    border: 0.1rem solid var(--grey-border);
+    margin-right: 0.8rem;
+}
+
+form input[type=checkbox] {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+form div {
+    display: flex;
+    align-items: baseline;
+    margin: 0.5rem 0;
+}
+
+/* Multiselect */
+.select-container {
+    flex-direction: column;
+    min-width: 200px;
+}
+
+#select-btn {
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    border: 0.1rem solid var(--grey-border);
+    margin-bottom: 0 !important;
+}
+
+#artist-container,
+#featuring-container {
+    width: max-content;
+    border: 1px solid var(--grey-border);
+    border-radius: 0.5rem;
+    margin-top: 0 !important;
+    flex-direction: column;
+    display: none;
+}
+
+.option {
+    align-items: center;
+    padding: 0.4rem 0.8rem;
+}
+
+.option:hover {
+    background-color: var(--anchor-bg-hover);
+}
+
+
+@media (max-width: 60em) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: baseline;
+    }
+
+    #hamburger-btn {
+        display: block;
+    }
+
+    .menu {
+        display: none;
+        width: 100%;
+        /* padding: 1rem 0; */
+        flex-direction: column;
+        text-align: center;
+        align-self: center;
+        justify-content: center;
+        gap: 2rem;
+
+        margin: auto auto;
+        padding: 4em;
+
+        /* transform: translateX(100%);
+        transition: transform 350ms ease-out; */
+
+        position: fixed;
+        z-index: 1000;
+        inset: 0;
+
+        background-color: rgba(0, 0, 0, 0.808);
+        backdrop-filter: blur(30px);
+        font-size: 1.5em;
+    }
+
+    .menu.open {
+        width: 100vw;
+        display: flex;
+        background-color: rgba(0, 0, 0, 0.541);
+        backdrop-filter: blur(30px);
+        /* background: linear-gradient(151deg, rgba(38, 38, 38, 1) 0%, rgba(0, 0, 0, 1) 100%, rgba(0, 0, 0, 1) 100%); */
+    }
+
+}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block head %}
+{{super()}}
+{% endblock %}
+
+{% block nav %}
+{{super()}}
+{% endblock %}
+
+{% block container %}
+<div class="header">
+    <h2>
+        <i class="uil uil-shield"></i> {% block title %}Login{% endblock %}
+    </h2>
+</div>
+<form method="post">
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" name="email">
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" name="password">
+    </div>
+    <div>
+        <button type="submit" class="btn">Login</button>
+    </div>
+</form>
+{% endblock %}
