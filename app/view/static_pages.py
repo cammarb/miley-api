@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template
 
 
 blueprint = Blueprint("static_pages", __name__)
@@ -6,4 +6,4 @@ blueprint = Blueprint("static_pages", __name__)
 
 @blueprint.get("/")
 def home():
-    return render_template("home.html"), request.url_root
+    return render_template("home.html")
