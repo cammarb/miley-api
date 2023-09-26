@@ -1,5 +1,5 @@
 from api.extensions.database import db,
-from api.models.songs import Song
+from api.model.songs import Song
 
 
 def test_song_update(client):
