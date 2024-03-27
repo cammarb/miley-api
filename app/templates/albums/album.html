@@ -32,30 +32,9 @@
             value="{{ request.form.get('release_date') or album.release_date}}">
     </div>
     <div>
-        <label for="is_live">Live:</label>
-        <input type="checkbox" name="is_live" id="is_live" value="{{ request.form.get('is_live') or album.is_live}}">
-    </div>
-    <div>
-        <label for="is_ep">EP:</label>
-        <input type="checkbox" name="is_ep" id="is_ep" value="true"
-            value="{{ request.form.get('is_ep') or album.is_ep}}">
-    </div>
-    <div>
         <label for="total_length">Total length:</label>
         <input type="text" name="total_length" id="total_length"
             value="{{ request.form.get('total_length') or album.total_length}}">
-    </div>
-    <div>
-        <label for="artist_id">Artist:</label>
-        <select name="artist_id" id="artist_id">
-            {% for artist in artists %}
-            {% if album.artist_id == artist.id %}
-            <option selected value="{{ request.form.get('artist_id') or artist.id }}">{{artist.name}}</option>
-            {% else %}
-            <option value="{{ request.form.get('artist_id') or artist.id }}">{{artist.name}}</option>
-            {% endif %}
-            {% endfor %}
-        </select>
     </div>
     <div>
         <button type="submit" class="btn">Update</button>

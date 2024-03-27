@@ -39,23 +39,6 @@
     </div>
 
     <div>
-        <label for="main_artists">Main Artist(s):</label>
-        <div class="select-container" id="main_artists" name="main_artists">
-            <div id="select-btn" onclick="toggleArtist()">
-                Select Options
-                <i id="angle-down-icon" class="uis uis-angle-down"></i>
-            </div>
-            <div id="artist-container">
-                {% for artist in artists %}
-                <div class="option">
-                    <input type="checkbox" name="main_artist" value="{{artist.id}}">{{artist.name}}
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-
-    <div>
         <label for="featuring_artists">Featuring Artist(s):</label>
         <div class="select-container" id="featuring_artists" name="featuring_artists">
             <div id="select-btn" onclick="toggleFeaturing()">

@@ -30,11 +30,8 @@
 
     <div class="info">
       <h2>{{album.title}}</h2>
-      {% for artist in artists %} {% if artist["id"] == album.artist_id %}
-      <h3>By: {{artist["name"]}}</h3>
-      {% endif %} {% endfor %}
       <h4>Release date: {{album.release_date}}</h4>
-      <p># of songs: {{album.number_of_songs}}</p>
+      <p># of songs: {{number_of_songs}}</p>
       <button id="tracklist-toggle" class="btn-alt" onclick="openTracklist();">
         Songs
       </button>
@@ -62,39 +59,4 @@
 </div>
 {% endfor %}
 
-<!-- <table>
-    <thead>
-        <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Artist</th>
-            <th scope="col">Release Date</th>
-            <th scope="col"># of songs</th>
-            {% if current_user.is_authenticated %}
-            <th scope="col">Actions</th>
-            {% endif %}
-
-        </tr>
-    </thead>
-    <tbody>
-        {% for album in albums %}
-        <tr>
-            <td>{{album.title}}</td>
-            {% for artist in artists %}
-            {% if artist["id"] == album.artist_id %}
-            <td>{{artist["name"]}}</td>
-            {% endif %}
-            {% endfor %}
-            <td>{{album.release_date}}</td>
-            <td>{{album.number_of_songs}}</td>
-            {% if current_user.is_authenticated %}
-            <td>
-                <a href="/albums/{{album.id}}">
-                    <button class="btn">Edit</button>
-                </a>
-            </td>
-            {% endif %}
-        </tr>
-        {% endfor %}
-    </tbody>
-</table> -->
 {% endif %} {% endblock %}

@@ -1,1 +1,1 @@
-from . import albums, main, artists, auth, songs
+from . import albums, main, artists, auth, tracks

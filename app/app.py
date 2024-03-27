@@ -18,12 +18,11 @@ def create_app():
 
 
 def register_blueprints(app: Flask):
-    app.register_blueprint(view.songs.blueprint)
+    app.register_blueprint(view.tracks.blueprint)
     app.register_blueprint(view.albums.blueprint)
-    app.register_blueprint(view.artists.blueprint)
     app.register_blueprint(view.static_pages.blueprint)
     app.register_blueprint(view.auth.blueprint)
-    app.register_blueprint(api.blueprint, url_prefix="/api/v1/")
+    # app.register_blueprint(api.blueprint, url_prefix="/api/v1/")
 
 
 def register_extensions(app: Flask):

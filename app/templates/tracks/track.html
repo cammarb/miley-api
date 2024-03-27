@@ -16,50 +16,32 @@
     </h1>
 </div>
 
-<form method="post" action="{{ url_for('songs.update_song', id=song.id) }}">
+<form method="post" action="{{ url_for('tracks.update_track', id=track.id) }}">
     <div>
         <label for="title">Title:</label>
         <input type="text" name="title" id="title" placeholder="See You Again"
-            value="{{ request.form.get('title') or song.title }}">
+            value="{{ request.form.get('title') or track.title }}">
     </div>
     <div>
         <label for="slug">Slug:</label>
         <input type="text" name="slug" id="slug" placeholder="see-you-again"
-            value="{{ request.form.get('slug') or song.slug }}">
+            value="{{ request.form.get('slug') or track.slug }}">
     </div>
     <div>
         <label for=" length">Length:</label>
-        <input type="text" name="length" id="length" value="{{ request.form.get('length') or song.length }}">
+        <input type="text" name="length" id="length" value="{{ request.form.get('length') or track.length }}">
     </div>
     <div>
         <label for="album_id">Album:</label>
         <select name="album_id" id="album_id">
             {% for album in albums %}
-            {% if song.album_id == album.id %}
+            {% if track.album_id == album.id %}
             <option selected value="{{ request.form.get('album.id') or album.id }}">{{album.title}}</option>
             {% else %}
             <option value="{{ request.form.get('album.id') or album.id }}">{{album.title}}</option>
             {% endif %}
             {% endfor %}
         </select>
-    </div>
-    <div>
-        <label for="main_artists">Main Artist(s):</label>
-        <div class="select-container" id="main_artists" name="main_artists">
-            <div id="select-btn" onclick="toggleArtist()">
-                <span id="selected">Select Options</span>
-                <i id="angle-down-icon" class="uis uis-angle-down"></i>
-            </div>
-            <div id="artist-container">
-                {% for artist in artists %}
-                <div class="option">
-                    <input {% for song_artist in song_artists %} {% if (artist.id==song_artist.artist_id) %} checked {%
-                        endif %} {% endfor %} type="checkbox" name="main_artist" id="main_artist"
-                        onchange="checkArtistChange()" value="{{artist.id}}">{{artist.name}}
-                </div>
-                {% endfor %}
-            </div>
-        </div>
     </div>
     <div>
         <label for="featuring_artists">Featuring Artist(s):</label>
@@ -71,7 +53,7 @@
             <div id="featuring-container">
                 {% for artist in artists %}
                 <div class="option">
-                    <input {% for song_featuring in song_featurings %} {% if (artist.id==song_featuring.featuring_id) %}
+                    <input {% for feat_artist in featuring_artists %} {% if (artist.id==feat_artist.id) %}
                         checked {% endif %} {% endfor %} type="checkbox" name="ft_artist" id="ft_artist"
                         onchange="checkFeaturingChange()" value="{{artist.id}}">{{artist.name}}
                 </div>
@@ -83,7 +65,7 @@
         <button type="submit" class="btn">Update</button>
     </div>
 </form>
-<form action="{{ url_for('songs.delete_song', id=song.id) }}" method="post">
+<form action="{{ url_for('tracks.delete_track', id=track.id) }}" method="post">
     <button type="submit" class="btn btn-danger">Remove</button>
 </form>
 {% endblock %}

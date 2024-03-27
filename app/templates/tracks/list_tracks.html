@@ -1,0 +1,59 @@
+{% extends 'base.html'%} {% block head%} {{super()}}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/tracks.css') }}"
+/>
+
+{% endblock %} {% block nav %} {{super()}} {% endblock %} {% block container %}
+<div class="header">
+  <h1>{% block title %} Songs {% endblock %}</h1>
+  <!-- {% if current_user.is_authenticated and current_user.role == 3 %} -->
+  <a href="/tracks/add_song">
+    <button type="button" class="btn-alt">Add</button></a
+  >
+  <!-- {% endif %} -->
+</div>
+
+<!-- List of tracks added -->
+{% if not tracks %}
+<p>No tracks added yet.</p>
+{% else %}
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Album</th>
+      <th scope="col">Length</th>
+      <th scope="col">Featuring Artist</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for track in tracks %}
+    <tr>
+      <td>
+        <a href="/tracks/{{track.id}}">{{track.title}}</a></td>
+      {% for album in albums %} {% if (album.id == track.album_id) %}
+      <td>
+        <a href="/albums/{{ album.id }}" id="album-link">{{ album.title }}</a>
+      </td>
+      {% endif %} {% endfor %}
+      <td>{{track.length}}</td>
+      
+      <td>
+        {% for artist_name in track_artist_mapping.get(track.id, []) %}
+            {{ artist_name }}
+            {% if not loop.last %}, {% endif %}
+        {% endfor %}
+      </td>
+      {% if current_user.is_authenticated %}
+      <td>
+        <a href="/tracks/{{track.id}}"> <button class="btn-alt">Edit</button></a>
+      </td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %} {% endblock %}
