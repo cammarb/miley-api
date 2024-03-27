@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from app.model.users import User
 from flask_login import login_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -13,6 +15,7 @@ def register(req_form):
             name=req_form["name"],
             email=req_form["email"],
             username=req_form["email"].split("@")[0],
+            role_id=UUID("dd2997cd8cd94881a50eec838304b96f"),
             passwd=generate_password_hash(req_form["password"]),
         )
         new_user.save()

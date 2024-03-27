@@ -44,22 +44,9 @@
         </select>
     </div>
     <div>
-        <label for="featuring_artists">Featuring Artist(s):</label>
-        <div class="select-container" id="featuring_artists" name="featuring_artists">
-            <div id="select-btn" onclick="toggleFeaturing()">
-                Select Options
-                <i id="angle-down-icon" class="uis uis-angle-down"></i>
-            </div>
-            <div id="featuring-container">
-                {% for artist in artists %}
-                <div class="option">
-                    <input {% for feat_artist in featuring_artists %} {% if (artist.id==feat_artist.id) %}
-                        checked {% endif %} {% endfor %} type="checkbox" name="ft_artist" id="ft_artist"
-                        onchange="checkFeaturingChange()" value="{{artist.id}}">{{artist.name}}
-                </div>
-                {% endfor %}
-            </div>
-        </div>
+        <label for="featuring_artist">Featuring Artist:</label>
+        <input type="text" name="featuring_artist" id="featuring_artist" placeholder="Billy Ray Cyrus"
+        value="{{ request.form.get('featuring_artist') or track.featuring_artist }}">
     </div>
     <div>
         <button type="submit" class="btn">Update</button>

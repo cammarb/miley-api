@@ -1,1 +1,1 @@
-from . import album, artist, role, track, users
+from . import album, role, track, users

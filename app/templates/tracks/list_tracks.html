@@ -26,7 +26,6 @@
       <th scope="col">Album</th>
       <th scope="col">Length</th>
       <th scope="col">Featuring Artist</th>
-      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -42,10 +41,7 @@
       <td>{{track.length}}</td>
       
       <td>
-        {% for artist_name in track_artist_mapping.get(track.id, []) %}
-            {{ artist_name }}
-            {% if not loop.last %}, {% endif %}
-        {% endfor %}
+        {{ track.featuring_artist }}
       </td>
       {% if current_user.is_authenticated %}
       <td>

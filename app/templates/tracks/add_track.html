@@ -39,20 +39,8 @@
     </div>
 
     <div>
-        <label for="featuring_artists">Featuring Artist(s):</label>
-        <div class="select-container" id="featuring_artists" name="featuring_artists">
-            <div id="select-btn" onclick="toggleFeaturing()">
-                Select Options
-                <i id="angle-down-icon" class="uis uis-angle-down"></i>
-            </div>
-            <div id="featuring-container">
-                {% for artist in artists %}
-                <div class="option">
-                    <input type="checkbox" name="ft_artist" value="{{artist.id}}">{{artist.name}}
-                </div>
-                {% endfor %}
-            </div>
-        </div>
+        <label for="featuring_artists">Featuring Artist:</label>
+        <input type="text" name="length" id="length" placeholder="Billy Ray Cyrus">
     </div>
     <div>
         <button type="submit" class="btn ">Add</button>

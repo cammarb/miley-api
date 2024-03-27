@@ -1,1 +1,1 @@
-from . import albums, static_pages, artists, auth, tracks
+from . import albums, static_pages, auth, tracks

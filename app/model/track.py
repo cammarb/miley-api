@@ -8,8 +8,6 @@ class Track(db.Model, CRUD_mixing):
     title = db.Column(db.String, nullable=False, unique=True)
     slug = db.Column(db.String, nullable=False, unique=True)
     length = db.Column(db.String, nullable=False)
+    featuring_artist = db.Column(db.String, nullable=True)
     album_id = db.Column(UUID(as_uuid=True), db.ForeignKey("album.id"), nullable=True)
     album = db.relationship("Album", back_populates="tracks")
-    featuring_artists = db.relationship(
-        "TrackArtist", back_populates="track", cascade="all, delete-orphan"
-    )

@@ -1,11 +1,8 @@
 from flask import redirect, request, render_template, url_for, abort
 from flask import Blueprint
 from flask_login import login_required
-from collections import defaultdict
-from uuid import UUID
 
 from app.model.track import Track
-from app.model.artist import Artist, TrackArtist
 from app.model.album import Album
 from flask_sqlalchemy import SQLAlchemy
 from app.controller.main import get_all, get_one
@@ -20,22 +17,11 @@ blueprint = Blueprint("tracks", __name__)
 def get_tracks():
     tracks = get_all(Track)
     albums = get_all(Album)
-    artists = get_all(Artist)
-    featuring_artists = get_all(TrackArtist)
-
-    track_artist_mapping = defaultdict(list)
-    for feat_artist in featuring_artists:
-        track_artist_mapping[feat_artist.track_id].append(
-            next(
-                artist.name for artist in artists if artist.id == feat_artist.artist_id
-            )
-        )
 
     return render_template(
         "tracks/list_tracks.html",
         tracks=tracks,
         albums=albums,
-        track_artist_mapping=track_artist_mapping,
     )
 
 
@@ -46,17 +32,11 @@ def get_track(id):
         abort(404)
 
     albums = get_all(Album)
-    artists = get_all(Artist)
-    track_artists = TrackArtist.query.filter_by(track_id=id).all()
-    artist_ids = [track_artist.artist_id for track_artist in track_artists]
-    featuring_artists = Artist.query.filter(Artist.id.in_(artist_ids)).all()
 
     return render_template(
         "tracks/track.html",
         track=track,
         albums=albums,
-        featuring_artists=featuring_artists,
-        artists=artists,
     )
 
 
@@ -77,8 +57,7 @@ def delete_track(id):
 @login_required
 def add_track():
     albums = get_all(Album)
-    artists = get_all(Artist)
-    return render_template("tracks/add_track.html", albums=albums, artists=artists)
+    return render_template("tracks/add_track.html", albums=albums)
 
 
 @blueprint.post("/tracks/add_song")
